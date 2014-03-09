@@ -43,7 +43,7 @@
 /**
  * Global instance of the component loader
  **/
-componentLoader = (function ($) {
+componentLoader = (function (window) {
   'use strict';
 
   // Prefix to be used to find the components
@@ -100,8 +100,9 @@ componentLoader = (function ($) {
    **/
   function scan( context ) {
 
-    var context              = context || document.body,
-        aComponents          = context.querySelectorAll("[class*='"+ COMPONENT_PREFIX +"']"),
+    context = context || document.body;
+
+    var aComponents          = context.querySelectorAll("[class*='"+ COMPONENT_PREFIX +"']"),
         aClassList           = [],
         iIndex               = -1,
         elementInstanceArray = [],
@@ -176,7 +177,7 @@ componentLoader = (function ($) {
    * @param {Object} The context from which to start scanning
    */
   api.checkForNewComponents = function (context) {
-    var context = context || document.body;
+    context = context || document.body;
 
     // look for new components
     scan(context);
@@ -364,7 +365,7 @@ componentLoader = (function ($) {
   // outer members
   return api;
 
-}(jQuery));
+}(window));
 
 
 /*
