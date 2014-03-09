@@ -100,13 +100,14 @@ componentLoader = (function ($) {
 	 **/
 	function scan( context ) {
 
-		var context              = context || document.body,
-		    aComponents          = $("[class*='"+ COMPONENT_PREFIX +"']", context),
-		    aClassList           = [],
+		context = context || document.body;
+
+		var aComponents          = $("[class*='"+ COMPONENT_PREFIX +"']", context),
+        aClassList           = [],
         iIndex               = -1,
         elementInstanceArray = [],
-        $element             = null,
-        sName                = "";
+        $element = null,
+        sName = "";
 
 		// loops through all component instances on page
 		aComponents.each(function() {
@@ -172,22 +173,22 @@ componentLoader = (function ($) {
 	 */
 	api.initializeComponents = function () {
 		var component            = null,
-		    sName                = null,
-		    oFunction            = null,
-		    c                    = 0,
-		    nAvailableComponents = _availableComponents.length,
-		    elementInstanceArray = null,
-		    $element             = null,
-		    componentAPI         = null,
-		    componentId          = null;
+        sName                = null,
+        oFunction            = null,
+        c                    = 0,
+        nAvailableComponents = _availableComponents.length,
+        elementInstanceArray = null,
+        $element             = null,
+        componentAPI         = null,
+        componentId          = null;
 
 		// go through all the available components
 		for (c = 0; c < nAvailableComponents; c++) {
 
 			// grab the component
 			component = _availableComponents[c],
-	    sName     = component.name,
-	    oFunction = component.func;
+      sName     = component.name,
+      oFunction = component.func;
 
 			// checks if component exist the page
 			if (_componentsHash[sName]) {
