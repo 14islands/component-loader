@@ -105,20 +105,21 @@ componentLoader = (function ($) {
 		    aClassList           = [],
         iIndex               = -1,
         elementInstanceArray = [],
+        $element             = null,
         sName                = "";
 
 		// loops through all component instances on page
 		aComponents.each(function() {
 
 			sName = "";
-			element = $(this);
+			$element = $(this);
 
 			// check this hasn't already been added to
 			// the array of elements
-			if (!element.data("componentized")) {
+			if (!$element.data("componentized")) {
 
 				// find the name of the component instance
-				aClassList = element.attr("class").split(" ");
+				aClassList = $element.attr("class").split(" ");
 
 				$.each(aClassList, function(){
 
@@ -136,7 +137,7 @@ componentLoader = (function ($) {
 							elementInstanceArray = _componentsHash[sName];
 						}
 
-						elementInstanceArray.push(element);
+						elementInstanceArray.push($element);
 						_componentsHash[sName] = elementInstanceArray;
 
 						return;
@@ -176,6 +177,7 @@ componentLoader = (function ($) {
 		    c                    = 0,
 		    nAvailableComponents = _availableComponents.length,
 		    elementInstanceArray = null,
+		    $element             = null,
 		    componentAPI         = null,
 		    componentId          = null;
 
