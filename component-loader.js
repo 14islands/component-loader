@@ -105,7 +105,7 @@ componentLoader = (function ($) {
         sName                = "";
 
     // loops through all component instances on page
-    Array.prototype.forEach.call( aComponents, function(element) {
+    [].forEach.call( aComponents, function(element) {
 
       sName = "";
 
