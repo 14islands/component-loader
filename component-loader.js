@@ -38,7 +38,7 @@
  *
  */
 
-/*global jQuery: true  */
+/*global  */
 
 /**
  * Global instance of the component loader
@@ -216,7 +216,7 @@ componentLoader = (function (window) {
         elementInstanceArray = _componentsHash[sName];
 
         // loop through all instances
-        elementInstanceArray.forEach(function(element, index) {
+        elementInstanceArray.forEach(function(element) {
 
           // execute instance of component
           if (oFunction !== undefined && !element.getAttribute('data-componentized')) {
