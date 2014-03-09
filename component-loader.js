@@ -45,6 +45,10 @@
  **/
 componentLoader = (function ($) {
   'use strict';
+
+  // Prefix to be used to find the components
+  var COMPONENT_PREFIX = "js-component-";
+
   // this scope
   var api = {};
 
@@ -97,7 +101,6 @@ componentLoader = (function ($) {
   function scan( context ) {
 
     var context              = context || document.body,
-        COMPONENT_PREFIX     = "js-component-",
         aComponents          = context.querySelectorAll("[class*='"+ COMPONENT_PREFIX +"']"),
         aClassList           = [],
         iIndex               = -1,
@@ -191,21 +194,19 @@ componentLoader = (function ($) {
     var component            = null,
         sName                = null,
         oFunction            = null,
-        oStyle               = null,
         c                    = 0,
-        cLen                 = _availableComponents.length,
+        nAvailableComponents = _availableComponents.length,
         elementInstanceArray = null,
         componentAPI         = null,
         componentId          = null;
 
     // go through all the available components
-    for (c = 0; c < cLen; c++) {
+    for (c = 0; c < nAvailableComponents; c++) {
 
       // grab the component
       component = _availableComponents[c];
       sName     = component.name;
       oFunction = component.func;
-      oStyle    = null;
 
       // checks if component exist the page
       if (_componentsHash[sName]) {
